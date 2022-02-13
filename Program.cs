@@ -1,41 +1,20 @@
 ﻿using System;
-using ClassLibraryResumeProvider;
-using ClassLibraryInitialScreening;
-using ClassLibraryFinalAssessment;
+using ClassLibraryBookFinder;
+using DetermineBestSeller;
 
-namespace RecruitmentSequentialComposition
+namespace MainProject
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var x = new RecruitmentInterface();
-            var resume_provider = new ResumeProvider(x);
+            var x = new ProgramClass();
+            var dbs = new BestSeller(x);
+            Console.WriteLine("Showing " + dbs.showrequired(2021));
 
-            Console.WriteLine("Demonstrating Sequential Component Composition\n");
-
-            string allResumeList = resume_provider.showrequired();
-            Console.WriteLine("Getting "+allResumeList+"...");
-
-            var initial_screening = new InitialScreening(x);
-            string selectedResumeList = initial_screening.showrequired(allResumeList);
-            Console.WriteLine("Getting " + selectedResumeList + "...");
-
-            var final_assessment = new FinalAssessment(x);
-            Console.WriteLine("Getting " + final_assessment.showrequired(selectedResumeList) + "...");
-
-            /*IResumeProvider resumeProvider = new ResumeProvider();
-             IInitialScreening initialScreening = new InitialScreening();
-             IFinalAssessment finalAssessment = new FinalAssessment();
-
-             Console.WriteLine("Demonstrating Sequential Component Composition\n");
-
-             String allResumeList = resumeProvider.provideResume();
-             Console.WriteLine("<"+allResumeList+"> returned\n");
-             String selectedResumeList = initialScreening.provideSelected(allResumeList);
-             Console.WriteLine("<"+selectedResumeList + "> returned\n");
-             String finalAcceptanceList = finalAssessment.acceptanceList(selectedResumeList);
-             Console.WriteLine("<"+finalAcceptanceList + "> returned\n");*/
+           /* IBestSeller dbs = new BestSeller();
+            String best_seller_list = dbs.showBestSellerList(2021);
+            Console.WriteLine("Showing <" + best_seller_list+">");*/
 
         }
     }
